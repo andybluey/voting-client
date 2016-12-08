@@ -56,7 +56,7 @@ describe('reducer', () => {
         }
       }
     };
-    const nextState = reducer(underfined, action);
+    const nextState = reducer(undefined, action);
 
     expect(nextState).to.equal(fromJS({
       vote: {
