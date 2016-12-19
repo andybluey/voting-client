@@ -1,5 +1,6 @@
 import React from 'react';
 import PureRenderMixin from 'react-addons-pure-render-mixin';
+import classNames from 'classnames'
 
 export default React.createClass({
   mixins: [PureRenderMixin],
@@ -14,8 +15,9 @@ export default React.createClass({
   },
   render: function() {
     return <div className="voting">
-        {this.getPair().map(entry =>
+      {this.getPair().map(entry =>
         <button key={entry}
+                className={classNames({voted: this.hasVotedFor(entry)})}
                 disabled={this.isDisabled()}
                 onClick={() => this.props.vote(entry)}>
           <h1>{entry}</h1>

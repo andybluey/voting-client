@@ -24,7 +24,7 @@ describe('Voting', () => {
 
   it('invokes callback when a button is clicked', () => {
     let votedWith;
-    const vote = (entry) => votedWith = entry;
+    function vote(entry) { votedWith = entry; }
 
     const component = renderIntoDocument(
       <Voting pair={["Trainspotting", "28 Days Later"]}
@@ -60,7 +60,8 @@ describe('Voting', () => {
 
   it('renders just the winner when there is one', () => {
     const component = renderIntoDocument(
-      <Voting winner="Trainspotting" />
+      <Voting winner="Trainspotting"
+              pair={["Trainspotting", "28 Days Later"]} />
     );
     const buttons = scryRenderedDOMComponentsWithTag(component, 'button');
     expect(buttons.length).to.equal(0);
